@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import familyMatching from "../../public/family-matching.jpeg";
 
 export const metadata: Metadata = {
   title: "Vaysage KV — Backend / Python Engineer | Open to Remote",
@@ -221,21 +223,43 @@ export default function VaysagePage() {
 
         {/* ── Hero ── */}
         <header className="pt-32 pb-20 px-4 sm:px-6 max-w-5xl mx-auto">
-          <p className="text-cyan-400 font-semibold tracking-widest text-sm uppercase mb-4 animate-fadeInUp">
-            Software Engineer · 15+ Years Experience
-          </p>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight mb-4 leading-none animate-fadeInUp delay-100">
-            Vaysage KV
-          </h1>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-cyan-400 mb-6 animate-fadeInUp delay-200">
-            Backend / Python Engineer
-          </h2>
-          <p className="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed mb-8 animate-fadeInUp delay-300">
-            I build production-grade backend systems — async Python services, secure auth flows, and
-            real-time data pipelines. Currently leading the backend of an in-house computer-vision
-            platform. Based in Kerala, India.{" "}
-            <span className="text-cyan-400 font-semibold">Available to overlap US time zones.</span>
-          </p>
+          <div className="flex flex-col md:flex-row md:items-start md:gap-10">
+            {/* Text side */}
+            <div className="flex-1">
+              <p className="text-cyan-400 font-semibold tracking-widest text-sm uppercase mb-4 animate-fadeInUp">
+                Software Engineer · 15+ Years Experience
+              </p>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight mb-4 leading-none animate-fadeInUp delay-100">
+                Vaysage KV
+              </h1>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-cyan-400 mb-6 animate-fadeInUp delay-200">
+                Backend / Python Engineer
+              </h2>
+              <p className="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed mb-8 animate-fadeInUp delay-300">
+                I build production-grade backend systems — async Python services, secure auth flows, and
+                real-time data pipelines. Currently leading the backend of an in-house computer-vision
+                platform. Based in Kerala, India.{" "}
+                <span className="text-cyan-400 font-semibold">Available to overlap US time zones.</span>
+              </p>
+            </div>
+
+            {/* Profile photo */}
+            <div className="flex-shrink-0 flex justify-center md:justify-end animate-fadeInUp delay-200 mb-8 md:mb-0 md:pt-6">
+              <div
+                className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden ring-2 ring-cyan-500/40"
+                style={{ boxShadow: "0 0 40px rgba(6,182,212,0.2)" }}
+              >
+                <Image
+                  src={familyMatching}
+                  alt="Vaysage KV with family"
+                  width={224}
+                  height={224}
+                  className="w-full h-full object-cover object-right"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
 
           {/* CTA row */}
           <div className="flex flex-wrap gap-3 animate-fadeInUp delay-500">

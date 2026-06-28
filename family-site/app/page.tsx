@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
+import zianAvatar from "../public/zian-avatar.jpeg";
+import zianPose from "../public/zian-pose.jpeg";
+import zianSanta from "../public/zian-santa.jpeg";
+import familyMatching from "../public/family-matching.jpeg";
+import familyChristmas from "../public/family-christmas.jpeg";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800", "900"] });
 
@@ -22,6 +28,14 @@ const floatingElements = [
   { emoji: "🌟", top: "90%", left: "70%", size: "text-2xl", delay: "1600ms", duration: "4s"   },
   { emoji: "🎀", top: "6%",  left: "50%", size: "text-2xl", delay: "900ms",  duration: "3.2s" },
   { emoji: "🍭", top: "60%", left: "6%",  size: "text-3xl", delay: "300ms",  duration: "4.8s" },
+];
+
+const galleryPhotos = [
+  { src: zianAvatar,      alt: "Zian smiling big",              caption: "Always happy 😄" },
+  { src: zianPose,        alt: "Zian striking a cool pose",     caption: "Coming at you! 🤜" },
+  { src: zianSanta,       alt: "Zian in Santa costume",         caption: "Santa Zian 🎅" },
+  { src: familyMatching,  alt: "Our family in matching shirts", caption: "Family goals 👨‍👩‍👦" },
+  { src: familyChristmas, alt: "Christmas with the family",     caption: "Merry Christmas 🎄" },
 ];
 
 export default function ZianPage() {
@@ -51,13 +65,20 @@ export default function ZianPage() {
         className="relative z-10 text-center max-w-2xl w-full"
         style={{ filter: "drop-shadow(0 8px 40px rgba(0,0,0,0.08))" }}
       >
-        {/* Avatar circle */}
+        {/* Avatar — real photo */}
         <div className="flex justify-center mb-6">
           <div
-            className="w-28 h-28 rounded-full flex items-center justify-center text-6xl animate-bounce-gentle"
-            style={{ background: "rgba(255,255,255,0.6)", backdropFilter: "blur(12px)" }}
+            className="w-32 h-32 rounded-full overflow-hidden animate-bounce-gentle ring-4 ring-white/70"
+            style={{ boxShadow: "0 0 0 6px rgba(255,255,255,0.4), 0 8px 32px rgba(0,0,0,0.15)" }}
           >
-            👶
+            <Image
+              src={zianAvatar}
+              alt="Zian smiling"
+              width={128}
+              height={128}
+              className="w-full h-full object-cover object-top"
+              priority
+            />
           </div>
         </div>
 
@@ -71,7 +92,7 @@ export default function ZianPage() {
             backgroundClip: "text",
           }}
         >
-          Hi! I'm Zian! ✨
+          Hi! I&apos;m Zian! ✨
         </h1>
 
         {/* Age badge */}
@@ -85,9 +106,39 @@ export default function ZianPage() {
         </div>
 
         {/* Tagline */}
-        <p className="text-xl sm:text-2xl font-semibold text-purple-900/80 mb-12 px-4">
+        <p className="text-xl sm:text-2xl font-semibold text-purple-900/80 mb-10 px-4">
           Explorer of worlds, builder of blocks,<br className="hidden sm:block" /> and the biggest joy of our lives 💖
         </p>
+
+        {/* Photo gallery strip */}
+        <div className="mb-10 -mx-4 px-4">
+          <p className="text-sm font-bold text-purple-800/60 uppercase tracking-widest mb-4">
+            Moments from my world 📸
+          </p>
+          <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide justify-start sm:justify-center">
+            {galleryPhotos.map(({ src, alt, caption }) => (
+              <div
+                key={alt}
+                className="flex-shrink-0 snap-center group"
+                style={{ width: "160px" }}
+              >
+                <div className="rounded-2xl overflow-hidden ring-2 ring-white/60 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                  style={{ height: "200px" }}>
+                  <Image
+                    src={src}
+                    alt={alt}
+                    width={160}
+                    height={200}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="text-xs font-bold text-purple-800/70 mt-2 text-center leading-tight">
+                  {caption}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Parent links */}
         <p className="text-lg font-bold text-purple-800/70 mb-5 uppercase tracking-widest text-sm">
@@ -96,14 +147,22 @@ export default function ZianPage() {
         <div className="flex flex-col sm:flex-row gap-5 justify-center">
           <Link
             href="/vaysage"
-            className="group flex flex-col items-center gap-2 px-8 py-6 rounded-3xl font-bold text-white transition-transform duration-200 hover:scale-105 active:scale-95"
+            className="group flex flex-col items-center gap-2 px-8 py-5 rounded-3xl font-bold text-white transition-transform duration-200 hover:scale-105 active:scale-95"
             style={{
               background: "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #7c3aed 100%)",
               boxShadow: "0 8px 32px rgba(99,102,241,0.4)",
               minWidth: "200px",
             }}
           >
-            <span className="text-4xl group-hover:animate-wiggle">🧑‍💻</span>
+            <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-white/50 mb-1">
+              <Image
+                src={familyMatching}
+                alt="Dad Vaysage"
+                width={64}
+                height={64}
+                className="w-full h-full object-cover object-right"
+              />
+            </div>
             <span className="text-2xl font-black">Dad</span>
             <span className="text-base font-semibold opacity-90">Vaysage — Software Engineer</span>
             <span className="text-xs font-semibold mt-1 bg-white/20 px-3 py-1 rounded-full">
@@ -113,14 +172,22 @@ export default function ZianPage() {
 
           <Link
             href="/ashmi"
-            className="group flex flex-col items-center gap-2 px-8 py-6 rounded-3xl font-bold text-white transition-transform duration-200 hover:scale-105 active:scale-95"
+            className="group flex flex-col items-center gap-2 px-8 py-5 rounded-3xl font-bold text-white transition-transform duration-200 hover:scale-105 active:scale-95"
             style={{
               background: "linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #fb923c 100%)",
               boxShadow: "0 8px 32px rgba(244,63,94,0.4)",
               minWidth: "200px",
             }}
           >
-            <span className="text-4xl group-hover:animate-wiggle">👩</span>
+            <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-white/50 mb-1">
+              <Image
+                src={familyMatching}
+                alt="Mom Ashmi"
+                width={64}
+                height={64}
+                className="w-full h-full object-cover object-left"
+              />
+            </div>
             <span className="text-2xl font-black">Mom</span>
             <span className="text-base font-semibold opacity-90">Ashmi — The Heart of Home</span>
             <span className="text-xs font-semibold mt-1 bg-white/20 px-3 py-1 rounded-full">
