@@ -55,7 +55,24 @@ export default function GalleryCarousel({ photos }: { photos: Photo[] }) {
             className="absolute inset-0 transition-opacity duration-700"
             style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           >
-            <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, 640px" />
+            {/* Blurred backdrop — fills letterbox gaps for any aspect ratio */}
+            <Image
+              src={src}
+              alt=""
+              fill
+              aria-hidden="true"
+              className="object-cover object-top scale-110"
+              style={{ filter: "blur(18px) brightness(0.6)" }}
+              sizes="(max-width: 640px) 100vw, 640px"
+            />
+            {/* Actual image — contained so nothing is cropped */}
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className="object-contain object-top relative"
+              sizes="(max-width: 640px) 100vw, 640px"
+            />
             {/* Caption gradient overlay */}
             <div
               className="absolute inset-x-0 bottom-0 px-6 pt-12 pb-5"
