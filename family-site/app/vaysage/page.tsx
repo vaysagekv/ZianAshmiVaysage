@@ -30,12 +30,19 @@ export const metadata: Metadata = {
     type: "profile",
     firstName: "Vaysage",
     lastName: "KV",
+    images: [
+      {
+        url: "/family-matching.jpeg",
+        alt: "Vaysage KV with family",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Vaysage KV — Backend / Python Engineer | Open to Remote",
     description:
       "15+ years in Python & Java. FastAPI, microservices, OAuth2/OIDC. Open to remote roles.",
+    images: ["/family-matching.jpeg"],
   },
 };
 

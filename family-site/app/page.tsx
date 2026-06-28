@@ -14,6 +14,23 @@ const nunito = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800",
 export const metadata: Metadata = {
   title: "Hi! I'm Zian 🌟 — ZianAshmiVaysage",
   description: "Welcome to Zian's little corner of the internet! A 3½ year old full of magic.",
+  openGraph: {
+    title: "Hi! I'm Zian 🌟",
+    description: "Welcome to Zian's little corner of the internet! A 3½ year old full of magic.",
+    url: "https://zianashmivaysage.me",
+    images: [
+      {
+        url: "/family-christmas.jpeg",
+        alt: "Zian, Ashmi & Vaysage — Merry Christmas 🎄",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hi! I'm Zian 🌟",
+    description: "Welcome to Zian's little corner of the internet! A 3½ year old full of magic.",
+    images: ["/family-christmas.jpeg"],
+  },
 };
 
 const floatingElements = [
