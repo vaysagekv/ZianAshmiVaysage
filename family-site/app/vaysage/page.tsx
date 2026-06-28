@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     "remote backend engineer",
     "computer vision backend",
   ],
-  authors: [{ name: "Vaysage KV", url: "https://zianashmivaysage.in/vaysage" }],
+  authors: [{ name: "Vaysage KV", url: "https://zianashmivaysage.me/vaysage" }],
   openGraph: {
     title: "Vaysage KV — Backend / Python Engineer | Open to Remote",
     description:
       "15+ years building production services in Python & Java. FastAPI, microservices, OAuth2/OIDC, real-time systems. Open to remote roles.",
-    url: "https://zianashmivaysage.in/vaysage",
+    url: "https://zianashmivaysage.me/vaysage",
     type: "profile",
     firstName: "Vaysage",
     lastName: "KV",

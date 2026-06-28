@@ -1,6 +1,6 @@
 # ZianAshmiVaysage
 
-Family website for Zian, Ashmi & Vaysage — live at **zianashmivaysage.in**
+Family website for Zian, Ashmi & Vaysage — live at **zianashmivaysage.me**
 
 | Route      | Page                                      |
 |------------|-------------------------------------------|
@@ -24,4 +24,4 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Deploy
 
-In Vercel, set **Root Directory → `family-site`** and add domain `zianashmivaysage.in`.
+In Vercel, set **Root Directory → `family-site`** and add domain `zianashmivaysage.me`.
