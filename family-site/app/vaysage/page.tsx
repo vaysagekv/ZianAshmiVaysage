@@ -286,7 +286,7 @@ export default function VaysagePage() {
               GitHub ↗
             </a>
             <a
-              href="/Vaysage_KV_Resume.docx"
+              href="/Vaysage_KV_Resume.pdf"
               download
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm transition-colors border border-slate-700"
             >
@@ -483,7 +483,7 @@ export default function VaysagePage() {
                 GitHub ↗
               </a>
               <span className="text-slate-700">·</span>
-              <a href="/Vaysage_KV_Resume.docx" download className="hover:text-cyan-400 transition-colors font-medium">
+              <a href="/Vaysage_KV_Resume.pdf" download className="hover:text-cyan-400 transition-colors font-medium">
                 Download Resume ↓
               </a>
             </div>
