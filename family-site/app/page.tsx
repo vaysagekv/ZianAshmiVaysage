@@ -198,7 +198,7 @@ export default function ZianPage() {
 
         {/* Footer */}
         <p className="mt-14 text-purple-800/60 font-semibold text-sm">
-          Made with 💖 by our little family · zianashmivaysage.in
+          Made with 💖 by our little family · zianashmivaysage.me
         </p>
       </div>
     </main>

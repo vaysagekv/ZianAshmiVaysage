@@ -3,9 +3,9 @@
 ## What this repo is
 
 A family website for Vaysage KV, his wife Ashmi, and their 3.5-year-old son Zian.
-Live domain: **zianashmivaysage.in** (deployed on Vercel)
+Live domain: **zianashmivaysage.me** (deployed on Vercel)
 
-Primary purpose of the site: Vaysage is actively looking for **remote backend/Python engineering roles** and will share `zianashmivaysage.in/vaysage` as his personal page in job applications.
+Primary purpose of the site: Vaysage is actively looking for **remote backend/Python engineering roles** and will share `zianashmivaysage.me/vaysage` as his personal page in job applications.
 
 ---
 
@@ -115,7 +115,7 @@ In Vercel dashboard:
 1. Import `ZianAshmiVaysage` GitHub repo
 2. **Root Directory → `family-site`**
 3. Framework: Next.js (auto-detected)
-4. Add domain `zianashmivaysage.in` in Settings → Domains
+4. Add domain `zianashmivaysage.me` in Settings → Domains
 
 Or via CLI:
 ```bash
