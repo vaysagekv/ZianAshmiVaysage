@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+import GalleryCarousel from "./GalleryCarousel";
 import zianAvatar from "../public/zian-avatar.jpeg";
 import zianPose from "../public/zian-pose.jpeg";
 import zianSanta from "../public/zian-santa.jpeg";
@@ -110,34 +111,20 @@ export default function ZianPage() {
           Explorer of worlds, builder of blocks,<br className="hidden sm:block" /> and the biggest joy of our lives 💖
         </p>
 
-        {/* Photo gallery strip */}
-        <div className="mb-10 -mx-4 px-4">
-          <p className="text-sm font-bold text-purple-800/60 uppercase tracking-widest mb-4">
-            Moments from my world 📸
+        {/* Photo gallery carousel */}
+        <div className="mb-10 w-full">
+          <p
+            className="text-sm font-black uppercase tracking-widest mb-6 flex items-center justify-center gap-2"
+            style={{
+              background: "linear-gradient(90deg, #7c3aed, #db2777)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            ✨ Moments from my world 📸
           </p>
-          <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide justify-start sm:justify-center">
-            {galleryPhotos.map(({ src, alt, caption }) => (
-              <div
-                key={alt}
-                className="flex-shrink-0 snap-center group"
-                style={{ width: "160px" }}
-              >
-                <div className="rounded-2xl overflow-hidden ring-2 ring-white/60 shadow-lg group-hover:scale-105 transition-transform duration-300"
-                  style={{ height: "200px" }}>
-                  <Image
-                    src={src}
-                    alt={alt}
-                    width={160}
-                    height={200}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-xs font-bold text-purple-800/70 mt-2 text-center leading-tight">
-                  {caption}
-                </p>
-              </div>
-            ))}
-          </div>
+          <GalleryCarousel photos={galleryPhotos} />
         </div>
 
         {/* Parent links */}
