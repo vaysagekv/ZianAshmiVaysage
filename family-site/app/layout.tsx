@@ -12,6 +12,12 @@ export const metadata: Metadata = {
     siteName: "Zian Ashmi Vaysage",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/family-christmas.jpeg",
+        alt: "Zian, Ashmi & Vaysage — Our Family",
+      },
+    ],
   },
 };
 
