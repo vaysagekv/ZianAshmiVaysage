@@ -260,7 +260,6 @@ Plan:
 Phone:   +91-73539-77190
 LinkedIn: https://linkedin.com/in/vaysage-kv-44b84a18
 GitHub:   https://github.com/vaysagekv
-Resume:   http://vaysage.net/Vaysage_KV_Resume.pdf
 
 "First, solve the problem. Then, write the code." — John Johnson`}
           </pre>
