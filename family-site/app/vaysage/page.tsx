@@ -267,9 +267,7 @@ GitHub:   https://github.com/vaysagekv
 
         {/* Footer */}
         <footer className="border-t-2 border-dashed border-green-900 pt-4 text-xs sm:text-sm text-center whitespace-pre-wrap">
-{`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  vaysage.net — Last login: Wed Apr 16 2025 from /dev/pts/3
-  `}
+{`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`}
           <Link href="/" className="underline hover:text-cyan-400 transition-colors">
             ← Back to Family Site
           </Link>
