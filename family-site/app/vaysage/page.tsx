@@ -76,47 +76,15 @@ const jsonLd = {
   },
 };
 
-const skills = [
-  {
-    category: "Languages",
-    color: "bg-violet-900/60 text-violet-200 border-violet-700",
-    items: ["Python", "Java", "SQL", "JavaScript", "C#", "Bash"],
-  },
-  {
-    category: "Backend & APIs",
-    color: "bg-cyan-900/60 text-cyan-200 border-cyan-700",
-    items: ["FastAPI", "Spring Boot", "Spring", "JPA", "REST", "Microservices", "async/await", "WebSockets"],
-  },
-  {
-    category: "Auth & Security",
-    color: "bg-green-900/60 text-green-200 border-green-700",
-    items: ["OAuth2", "OIDC", "Microsoft Entra ID", "BFF Pattern", "HttpOnly Cookies"],
-  },
-  {
-    category: "Real-time & Streaming",
-    color: "bg-yellow-900/60 text-yellow-200 border-yellow-700",
-    items: ["WebSocket", "gRPC", "WebRTC", "LiveKit"],
-  },
-  {
-    category: "Databases",
-    color: "bg-blue-900/60 text-blue-200 border-blue-700",
-    items: ["PostgreSQL", "MySQL", "Oracle", "SQLite", "Supabase", "Complex SQL & CTEs"],
-  },
-  {
-    category: "ML / CV Integration",
-    color: "bg-pink-900/60 text-pink-200 border-pink-700",
-    items: ["YOLOv8 (Ultralytics)", "ByteTrack", "ArcFace", "SCRFD", "InsightFace", "MediaPipe", "ONNX"],
-  },
-  {
-    category: "Tooling & DevOps",
-    color: "bg-orange-900/60 text-orange-200 border-orange-700",
-    items: ["Git", "Docker", "Dev Containers", "Linux", "Sentry", "uv / pip"],
-  },
-  {
-    category: "Frontend (working knowledge)",
-    color: "bg-slate-700/60 text-slate-300 border-slate-600",
-    items: ["React", "Vite"],
-  },
+const skillsListing = [
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 Languages             [Python] [Java] [SQL] [JavaScript] [C#] [Bash]",
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 Backend & APIs        [FastAPI] [Spring Boot] [Spring] [JPA] [REST] [Microservices] [async/await] [WebSockets]",
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 Auth & Security       [OAuth2] [OIDC] [Microsoft Entra ID] [BFF Pattern] [HttpOnly Cookies]",
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 Real-time & Streaming [WebSocket] [gRPC] [WebRTC] [LiveKit]",
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 Databases             [PostgreSQL] [MySQL] [Oracle] [SQLite] [Supabase] [Complex SQL & CTEs]",
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 ML / CV Integration   [YOLOv8 (Ultralytics)] [ByteTrack] [ArcFace] [SCRFD] [InsightFace] [MediaPipe] [ONNX]",
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 Tooling & DevOps      [Git] [Docker] [Dev Containers] [Linux] [Sentry] [uv / pip]",
+  "drwxr-xr-x  2 vaysage vaysage 4096 Apr 16 2025 Frontend (working kno) [React] [Vite]",
 ];
 
 const experience = [
@@ -197,6 +165,17 @@ const experience = [
   },
 ];
 
+function formatExperienceLog() {
+  return experience
+    .map(
+      (exp) =>
+        `[${exp.period}] ${exp.company.toUpperCase()} (${exp.location}) — ${exp.role}\n` +
+        exp.highlights.map((h) => `  * ${h}`).join("\n") +
+        `\n  { ${exp.tags.join(" | ")} }`
+    )
+    .join("\n\n");
+}
+
 export default function VaysagePage() {
   return (
     <>
@@ -206,305 +185,112 @@ export default function VaysagePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="bg-slate-950 text-slate-100 min-h-screen font-sans">
-        {/* ── Navigation ── */}
-        <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur-md">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-            <Link href="/" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm font-medium">
-              ← Back to Family
-            </Link>
-            <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-emerald-900/50 text-emerald-400 border border-emerald-800 animate-glow">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot" />
-                Open to Remote
-              </span>
-              <a
-                href="mailto:kvvaysage@gmail.com"
-                className="hidden sm:block text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors"
-              >
-                kvvaysage@gmail.com
-              </a>
-            </div>
-          </div>
-        </nav>
+      {/* CRT scanlines overlay – fixed, behind all content */}
+      <div className="fixed inset-0 pointer-events-none z-50 scanlines-overlay" />
 
-        {/* ── Hero ── */}
-        <header className="pt-32 pb-20 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-start md:gap-10">
-            {/* Text side */}
-            <div className="flex-1">
-              <p className="text-cyan-400 font-semibold tracking-widest text-sm uppercase mb-4 animate-fadeInUp">
-                Software Engineer · 15+ Years Experience
-              </p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight mb-4 leading-none animate-fadeInUp delay-100">
-                Vaysage KV
-              </h1>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-cyan-400 mb-6 animate-fadeInUp delay-200">
-                Backend / Python Engineer
-              </h2>
-              <p className="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed mb-8 animate-fadeInUp delay-300">
-                I build production-grade backend systems — async Python services, secure auth flows, and
-                real-time data pipelines. Currently leading the backend of an in-house computer-vision
-                platform. Based in Kerala, India.{" "}
-                <span className="text-cyan-400 font-semibold">Available to overlap US time zones.</span>
-              </p>
-            </div>
+      {/* Terminal document */}
+      <div className="min-h-screen bg-[#0a0a0a] text-[#00ff41] font-mono p-4 sm:p-6 md:p-8 max-w-4xl mx-auto relative text-sm sm:text-base">
+        
+        {/* ASCII banner */}
+        <pre className="text-center text-xs sm:text-sm md:text-base leading-none overflow-x-auto mb-6 mt-4 text-[#00ff41]">
+{`==============================
+   V A Y S A G E   K V
+==============================`}
+        </pre>
 
-            {/* Profile photo */}
-            <div className="flex-shrink-0 flex justify-center md:justify-end animate-fadeInUp delay-200 mb-8 md:mb-0 md:pt-6">
-              <div
-                className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden ring-2 ring-cyan-500/40"
-                style={{ boxShadow: "0 0 40px rgba(6,182,212,0.2)" }}
-              >
-                <Image
-                  src={familyMatching}
-                  alt="Vaysage KV with family"
-                  width={224}
-                  height={224}
-                  className="w-full h-full object-cover object-right"
-                  priority
-                />
-              </div>
+        {/* Prompt */}
+        <div className="mb-6">
+          <span>guest@vaysage.net:~$ finger vaysage</span>
+          <span className="animate-blink text-[#00ff41]">█</span>
+        </div>
+
+        {/* WHOAMI block + photo */}
+        <div className="flex flex-col md:flex-row gap-6 mb-8">
+          <div className="flex-1">
+            <pre className="text-sm sm:text-base leading-relaxed border border-green-900 p-4 overflow-x-auto mb-2">
+{`Login: vaysage          Name: Vaysage KV
+Directory: /home/vaysage    Shell: /bin/zsh
+Office: Thrissur, Kerala, IN
+Project: Backend / Python Engineer — Open to Remote (US tz overlap)
+Plan:
+  Build production-grade backend systems — async Python services,
+  secure auth flows, and real-time data pipelines. Currently leading
+  backend of an in-house computer-vision platform. Based in Kerala, India.
+  Available to overlap US time zones.`}
+            </pre>
+            <div className="flex items-center gap-2">
+              <span className="animate-pulse text-green-400 text-lg">●</span>
+              <span className="text-green-400 font-bold">ONLINE</span>
             </div>
           </div>
 
-          {/* CTA row */}
-          <div className="flex flex-wrap gap-3 animate-fadeInUp delay-500">
-            <a
-              href="mailto:kvvaysage@gmail.com"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm transition-colors"
-            >
-              ✉ Email Me
-            </a>
-            <a
-              href="https://linkedin.com/in/vaysage-kv-44b84a18"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm transition-colors border border-slate-700"
-            >
-              LinkedIn ↗
-            </a>
-            <a
-              href="https://github.com/vaysagekv"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm transition-colors border border-slate-700"
-            >
-              GitHub ↗
-            </a>
-            <a
-              href="/Vaysage_KV_Resume.pdf"
-              download
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm transition-colors border border-slate-700"
-            >
-              ⬇ Resume
-            </a>
-          </div>
-
-          {/* Quick stats */}
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 animate-fadeInUp delay-700">
-            {[
-              { value: "15+",      label: "Years Experience" },
-              { value: "Python",   label: "Primary Language" },
-              { value: "Remote",   label: "Work Mode" },
-              { value: "US tz",    label: "Overlap Available" },
-            ].map(({ value, label }) => (
-              <div key={label} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-center">
-                <div className="text-2xl font-black text-cyan-400">{value}</div>
-                <div className="text-xs text-slate-400 font-medium mt-0.5">{label}</div>
-              </div>
-            ))}
-          </div>
-        </header>
-
-        {/* ── About ── */}
-        <section className="px-4 sm:px-6 max-w-5xl mx-auto pb-16" aria-labelledby="about-heading">
-          <h2 id="about-heading" className="text-2xl font-bold mb-5 text-slate-100 flex items-center gap-2">
-            <span className="text-cyan-400">//</span> About
-          </h2>
-          <blockquote className="border-l-2 border-cyan-500 pl-6 text-slate-300 text-lg leading-relaxed">
-            Backend engineer with 15+ years building production services across Python and Java,
-            currently leading backend development of an in-house computer-vision platform. Strong with
-            FastAPI, asynchronous service design, microservices, REST APIs, and OAuth2/OIDC
-            authentication (Microsoft Entra ID, Backend-for-Frontend pattern). Owns systems end to end
-            — from real-time data pipelines and streaming to SQL data modeling and security hardening —
-            and works effectively across distributed, fully remote teams.
-          </blockquote>
-        </section>
-
-        {/* ── Skills ── */}
-        <section className="px-4 sm:px-6 max-w-5xl mx-auto pb-16" aria-labelledby="skills-heading">
-          <h2 id="skills-heading" className="text-2xl font-bold mb-6 text-slate-100 flex items-center gap-2">
-            <span className="text-cyan-400">//</span> Skills
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {skills.map(({ category, color, items }) => (
-              <div key={category} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
-                  {category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((skill) => (
-                    <span
-                      key={skill}
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-lg border ${color}`}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Experience ── */}
-        <section className="px-4 sm:px-6 max-w-5xl mx-auto pb-16" aria-labelledby="experience-heading">
-          <h2 id="experience-heading" className="text-2xl font-bold mb-8 text-slate-100 flex items-center gap-2">
-            <span className="text-cyan-400">//</span> Experience
-          </h2>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-3 top-2 bottom-2 w-px bg-slate-800 hidden sm:block" />
-
-            <div className="flex flex-col gap-8">
-              {experience.map(({ company, location, role, period, current, highlights, tags }) => (
-                <article
-                  key={`${company}-${period}`}
-                  className="sm:pl-10 relative"
-                >
-                  {/* Timeline dot */}
-                  <div
-                    className={`hidden sm:block absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 ${
-                      current
-                        ? "bg-cyan-500 border-cyan-400"
-                        : "bg-slate-800 border-slate-600"
-                    } flex items-center justify-center`}
-                    style={{ transform: "translateX(calc(-50% + 3px))" }}
-                  />
-
-                  <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-slate-700 transition-colors">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
-                      <div>
-                        <h3 className="text-lg font-bold text-slate-100">{role}</h3>
-                        <p className="text-cyan-400 font-semibold">
-                          {company}
-                          <span className="text-slate-400 font-normal"> · {location}</span>
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2 flex-shrink-0">
-                        {current && (
-                          <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-900/50 text-emerald-400 border border-emerald-800">
-                            Current
-                          </span>
-                        )}
-                        <time className="text-sm text-slate-400 whitespace-nowrap">{period}</time>
-                      </div>
-                    </div>
-
-                    <ul className="space-y-2 mb-4">
-                      {highlights.map((h, i) => (
-                        <li key={i} className="flex gap-2.5 text-sm text-slate-300 leading-relaxed">
-                          <span className="text-cyan-500 mt-0.5 flex-shrink-0">▸</span>
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-1.5">
-                      {tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-medium px-2 py-0.5 rounded-md bg-slate-800 text-slate-400 border border-slate-700"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              ))}
+          {/* Duotone photo */}
+          <div className="flex-shrink-0 flex flex-col items-center">
+            <div className="border border-green-500/60 p-1 inline-block">
+              <Image
+                src={familyMatching}
+                alt="Vaysage KV"
+                width={224}
+                height={224}
+                className="w-36 h-36 sm:w-48 sm:h-48 object-cover filter grayscale brightness-75 contrast-150 hue-rotate-90 opacity-80"
+              />
             </div>
+            <div className="text-xs mt-1 text-green-600">[* /home/vaysage/me.jpg]</div>
           </div>
-        </section>
+        </div>
 
-        {/* ── Education & Certifications ── */}
-        <section className="px-4 sm:px-6 max-w-5xl mx-auto pb-16" aria-labelledby="education-heading">
-          <h2 id="education-heading" className="text-2xl font-bold mb-6 text-slate-100 flex items-center gap-2">
-            <span className="text-cyan-400">//</span> Education & Certifications
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
-              <div className="text-2xl mb-2">🎓</div>
-              <h3 className="font-bold text-slate-100">B.E., Electronics & Communication Engineering</h3>
-              <p className="text-cyan-400 font-medium text-sm mt-0.5">Reva Institute of Technology & Management</p>
-              <p className="text-slate-400 text-sm mt-0.5">Bangalore · 2005 – 2009</p>
-            </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
-              <div className="text-2xl mb-2">📜</div>
-              <h3 className="font-bold text-slate-100">Oracle Certified Java Professional</h3>
-              <p className="text-cyan-400 font-medium text-sm mt-0.5">OCJP</p>
-              <p className="text-slate-400 text-sm mt-0.5">Oracle</p>
-            </div>
-          </div>
-        </section>
+        {/* Skills: ls -la */}
+        <div className="mb-8">
+          <div className="mb-1">$ ls -la skills/</div>
+          <pre className="text-xs sm:text-sm leading-snug overflow-x-auto whitespace-pre-wrap">
+{skillsListing.join("\n")}
+          </pre>
+        </div>
 
-        {/* ── Contact CTA ── */}
-        <section className="px-4 sm:px-6 max-w-5xl mx-auto pb-24" aria-labelledby="contact-heading">
-          <div className="rounded-3xl border border-cyan-900/50 bg-gradient-to-br from-slate-900 via-cyan-950/30 to-slate-900 p-10 text-center">
-            <h2 id="contact-heading" className="text-3xl font-black mb-3">Let&apos;s build something together</h2>
-            <p className="text-slate-300 text-lg mb-8 max-w-lg mx-auto">
-              I&apos;m actively looking for remote backend/Python engineering roles.
-              If you&apos;re building something interesting, I&apos;d love to hear about it.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <a
-                href="mailto:kvvaysage@gmail.com"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-colors text-base"
-              >
-                ✉ kvvaysage@gmail.com
-              </a>
-              <a
-                href="tel:+917353977190"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-colors border border-slate-700 text-base"
-              >
-                📞 +91 73539 77190
-              </a>
-            </div>
-            <div className="mt-6 flex items-center justify-center gap-6 text-slate-400 text-sm">
-              <a
-                href="https://linkedin.com/in/vaysage-kv-44b84a18"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-cyan-400 transition-colors font-medium"
-              >
-                LinkedIn ↗
-              </a>
-              <span className="text-slate-700">·</span>
-              <a
-                href="https://github.com/vaysagekv"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-cyan-400 transition-colors font-medium"
-              >
-                GitHub ↗
-              </a>
-              <span className="text-slate-700">·</span>
-              <a href="/Vaysage_KV_Resume.pdf" download className="hover:text-cyan-400 transition-colors font-medium">
-                Download Resume ↓
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* Experience: syslog */}
+        <div className="mb-8">
+          <div className="mb-1">$ cat /var/log/experience.log</div>
+          <pre className="text-xs sm:text-sm leading-relaxed overflow-x-auto whitespace-pre-wrap border-l-2 border-green-900 pl-4">
+{formatExperienceLog()}
+          </pre>
+        </div>
+
+        {/* Education */}
+        <div className="mb-8">
+          <div className="mb-1">$ cat /etc/credentials</div>
+          <pre className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+{`[BE] Electronics & Communication Engineering
+     Reva Institute of Technology & Management, Bangalore (2005 – 2009)
+
+[OCJP] Oracle Certified Java Professional
+     Oracle Corporation`}
+          </pre>
+        </div>
+
+        {/* Contact finger */}
+        <div className="mb-8">
+          <div className="mb-1">$ finger vaysage@vaysage.net</div>
+          <pre className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+{`Email:   kvvaysage@gmail.com
+Phone:   +91-73539-77190
+LinkedIn: https://linkedin.com/in/vaysage-kv-44b84a18
+GitHub:   https://github.com/vaysagekv
+Resume:   http://vaysage.net/Vaysage_KV_Resume.pdf
+
+"First, solve the problem. Then, write the code." — John Johnson`}
+          </pre>
+        </div>
 
         {/* Footer */}
-        <footer className="border-t border-slate-800 px-4 sm:px-6 py-6 max-w-5xl mx-auto text-center text-slate-500 text-sm">
-          <p>
-            Vaysage KV · Thrissur, Kerala, India ·{" "}
-            <Link href="/" className="hover:text-cyan-400 transition-colors">
-              Back to Family Site
-            </Link>
-          </p>
+        <footer className="border-t-2 border-dashed border-green-900 pt-4 text-xs sm:text-sm text-center whitespace-pre-wrap">
+{`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  vaysage.net — Last login: Wed Apr 16 2025 from /dev/pts/3
+  `}
+          <Link href="/" className="underline hover:text-cyan-400 transition-colors">
+            ← Back to Family Site
+          </Link>
+{` — This page best viewed in Netscape Navigator 3.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`}
         </footer>
       </div>
     </>
