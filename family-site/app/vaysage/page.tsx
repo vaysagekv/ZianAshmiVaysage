@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import familyMatching from "../../public/family-matching.jpeg";
 
 export const metadata: Metadata = {
   title: "Vaysage KV — Backend / Python Engineer | Open to Remote",
@@ -224,19 +222,6 @@ Plan:
             </div>
           </div>
 
-          {/* Duotone photo */}
-          <div className="flex-shrink-0 flex flex-col items-center">
-            <div className="border border-green-500/60 p-1 inline-block">
-              <Image
-                src={familyMatching}
-                alt="Vaysage KV"
-                width={224}
-                height={224}
-                className="w-36 h-36 sm:w-48 sm:h-48 object-cover filter grayscale brightness-75 contrast-150 hue-rotate-90 opacity-80"
-              />
-            </div>
-            <div className="text-xs mt-1 text-green-600">[* /home/vaysage/me.jpg]</div>
-          </div>
         </div>
 
         {/* Skills: ls -la */}
@@ -289,7 +274,7 @@ Resume:   http://vaysage.net/Vaysage_KV_Resume.pdf
           <Link href="/" className="underline hover:text-cyan-400 transition-colors">
             ← Back to Family Site
           </Link>
-{` — This page best viewed in Netscape Navigator 3.0
+{`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`}
         </footer>
       </div>
