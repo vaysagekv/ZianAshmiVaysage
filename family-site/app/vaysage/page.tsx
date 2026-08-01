@@ -198,7 +198,7 @@ export default function VaysagePage() {
 
         {/* Prompt */}
         <div className="mb-6">
-          <span>guest@vaysage.net:~$ finger vaysage</span>
+          <span>guest@zianashmivaysage.me:~$ finger vaysage</span>
           <span className="animate-blink text-[#00ff41]">█</span>
         </div>
 
@@ -266,13 +266,10 @@ GitHub:   https://github.com/vaysagekv
         </div>
 
         {/* Footer */}
-        <footer className="border-t-2 border-dashed border-green-900 pt-4 text-xs sm:text-sm text-center whitespace-pre-wrap">
-{`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`}
+        <footer className="border-t-2 border-dashed border-green-900 pt-4 text-xs sm:text-sm text-center">
           <Link href="/" className="underline hover:text-cyan-400 transition-colors">
             ← Back to Family Site
           </Link>
-{`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`}
         </footer>
       </div>
     </>
